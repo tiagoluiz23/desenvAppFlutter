@@ -2,16 +2,17 @@ import 'package:app_calculadora/Calculadora.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: "Calculadora Simples",
-      theme: ThemeData(primarySwatch: Colors.blue),
-      home: Calculadora()
-    );
+        title: "Calculadora Simples",
+        theme: ThemeData(primarySwatch: Colors.blue),
+        home: Calculadora());
   }
 }
