@@ -13,6 +13,6 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
         title: "Calculadora Simples",
         theme: ThemeData(primarySwatch: Colors.blue),
-        home: Calculadora());
+        home: const Calculadora());
   }
 }

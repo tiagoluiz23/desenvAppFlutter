@@ -49,7 +49,7 @@ class CalculadoraState extends State<Calculadora> {
               controller: t2,
             ),
 
-            Padding(padding: const EdgeInsets.only(top: 20)),
+            const Padding(padding: EdgeInsets.only(top: 20)),
             /*espaçamento*/
 
             Row(
@@ -82,8 +82,40 @@ class CalculadoraState extends State<Calculadora> {
               ],
             ),
 
+            const Padding(padding: EdgeInsets.only(top: 20)),
+            /*espaçamento*/
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                MaterialButton(
+                  color: Colors.blueAccent,
+                  onPressed: multiplicar,
+                  child: const Text(
+                    "*",
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+                MaterialButton(
+                  color: Colors.redAccent,
+                  onPressed: dividir,
+                  child: const Text(
+                    "/",
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+
             //espacamento depois dos botoes
-            Padding(padding: const EdgeInsets.only(top: 20)),
+            const Padding(padding: EdgeInsets.only(top: 20)),
 
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -110,9 +142,9 @@ class CalculadoraState extends State<Calculadora> {
 
   /*ATRIBUTOS */
   // ignore: prefer_typing_uninitialized_variables
-  var num1;
-  var num2;
-  var resultado = 0;
+  num num1 = 0;
+  num num2 = 0;
+  num resultado = 0;
 
   //Converter o tipo do texto
   TextEditingController t1 = TextEditingController(text: "");
@@ -121,25 +153,41 @@ class CalculadoraState extends State<Calculadora> {
   /*METODOS*/
   void somar() {
     setState(() {
-      num1 = int.parse(t1.text);
-      num2 = int.parse(t2.text);
-      resultado = num1 + num2;
+      num1 = num.parse(t1.text);
+      num2 = num.parse(t2.text);
+      resultado = num.parse((num1 + num2).toStringAsFixed(2));
     });
   }
+
+  void multiplicar() {
+    setState(() {
+      num1 = num.parse(t1.text);
+      num2 = num.parse(t2.text);
+      resultado = num.parse((num1 * num2).toStringAsFixed(2));
+    });
+  }
+
+  void subtrair() {
+    setState(() {
+      num1 = num.parse(t1.text);
+      num2 = num.parse(t2.text);
+      resultado = num.parse((num1 - num2).toStringAsFixed(2));
+    });
+  }
+
+  void dividir() {
+    setState(() {
+      num1 = num.parse(t1.text);
+      num2 = num.parse(t2.text);
+      resultado = num.parse((num1 / num2).toStringAsFixed(2));
+    });
+  }  
 
   void limpar() {
     setState(() {
       t1.text = "";
       t2.text = "";
       resultado = 0;
-    });
-  }
-
-  void subtrair() {
-    setState(() {
-      num1 = int.parse(t1.text);
-      num2 = int.parse(t2.text);
-      resultado = num1 - num2;
     });
   }
 }
